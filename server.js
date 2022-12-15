@@ -1,9 +1,11 @@
 const http = require("http");
 const fs = require("fs");
+const _ = require("lodash");
 
 // to create a  server
 const server = http.createServer((req, res) => {
-  console.log(req.url, req.method);
+  // lodash
+  const num = _.random(0, 20);
 
   let path = "./views/";
   switch (req.url) {
