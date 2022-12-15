@@ -9,7 +9,21 @@ app.listen(3000);
 
 // homepage
 app.get("/", (req, res) => {
-  res.render("index", { title: "Home" });
+  const blogs = [
+    {
+      title: "This is blog number 1",
+      snippet: "Lorem ipsum dolor sit amet consectetur",
+    },
+    {
+      title: "This is blog number 2",
+      snippet: "Lorem ipsum dolor sit amet consectetur",
+    },
+    {
+      title: "This is blog number 3",
+      snippet: "Lorem ipsum dolor sit amet consectetur",
+    },
+  ];
+  res.render("index", { title: "Home", blogs: blogs });
 });
 app.get("/about", (req, res) => {
   res.render("about", { title: "About" });
