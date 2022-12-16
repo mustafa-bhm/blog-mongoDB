@@ -1,5 +1,6 @@
 const Blog = require("../models/blog");
 
+// to get blogs in homepage
 const blog_index = (req, res) => {
   Blog.find()
     .sort({ createdAt: -1 })
@@ -10,6 +11,8 @@ const blog_index = (req, res) => {
       console.log(err);
     });
 };
+
+// to get blog details
 const blog_details = (req, res) => {
   const id = req.params.id;
   Blog.findById(id)
@@ -21,10 +24,12 @@ const blog_details = (req, res) => {
     });
 };
 
+// to get new blog form view
 const blog_create_get = (req, res) => {
   res.render("create", { title: "Create new blog" });
 };
 
+// to post new blog
 const blog_create_post = (req, res) => {
   const blog = new Blog(req.body);
   blog
@@ -37,6 +42,7 @@ const blog_create_post = (req, res) => {
     });
 };
 
+// to delete a blog
 const blog_delete = (req, res) => {
   const id = req.params.id;
   Blog.findByIdAndDelete(id)
