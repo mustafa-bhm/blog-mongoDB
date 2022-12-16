@@ -23,64 +23,24 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(morgan("dev"));
 
-// mongoose and mongo sandbox routes
-app.get("/add-blog", (req, res) => {
-  const blog = new Blog({
-    title: "new blog 2",
-    snippet: "about my blog",
-    body: "more info about this blog",
-  });
-  // to save the above object of blog to database
-  blog
-    .save()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-// to retrive all blogs from the db collection
-app.get("/all-blogs", (req, res) => {
-  Blog.find()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-// to find a single blog
-app.get("/single-blog", (req, res) => {
-  Blog.findById("639c8cad5e7e47c195021cdf")
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-// homepage
+// ***** Routes ***** //
 app.get("/", (req, res) => {
-  const blogs = [
-    {
-      title: "This is blog number 1",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-    {
-      title: "This is blog number 2",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-    {
-      title: "This is blog number 3",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-  ];
-  res.render("index", { title: "Home", blogs: blogs });
+  res.redirect("/blogs");
 });
 app.get("/about", (req, res) => {
   res.render("about", { title: "About" });
+});
+
+/// Blogs routes
+app.get("/blogs", (req, res) => {
+  Blog.find()
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render("index", { title: "all Blogs", blogs: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 app.get("/blogs/create", (req, res) => {
@@ -91,3 +51,42 @@ app.get("/blogs/create", (req, res) => {
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
 });
+
+//************/ mongoose and mongo sandbox routes // ***************
+// app.get("/add-blog", (req, res) => {
+//   const blog = new Blog({
+//     title: "new blog 2",
+//     snippet: "about my blog",
+//     body: "more info about this blog",
+//   });
+//   // to save the above object of blog to database
+//   blog
+//     .save()
+//     .then((result) => {
+//       res.send(result);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
+// // to retrive all blogs from the db collection
+// app.get("/all-blogs", (req, res) => {
+//   Blog.find()
+//     .then((result) => {
+//       res.send(result);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
+// // to find a single blog
+// app.get("/single-blog", (req, res) => {
+//   Blog.findById("639c8cad5e7e47c195021cdf")
+//     .then((result) => {
+//       res.send(result);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
+//************************************************/
