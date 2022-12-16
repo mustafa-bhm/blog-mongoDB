@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%-include("./partials/head.ejs") %>
+  <%-include("../partials/head.ejs") %>
   <body>
-    <%-include("./partials/nav.ejs") %>
+    <%-include("../partials/nav.ejs") %>
     <div class="blogs content">
       <h2>All Blogs</h2>
       <% if (blogs.length > 0){ %> <% blogs.forEach(element => { %>
@@ -11,9 +11,9 @@
         <p class="snippet"><%= element.snippet %></p>
       </a>
       <% }); %> <% } else { %>
-      <p>There are mo blosg to display</p>
+      <p>There are mo blogs to display</p>
       <%} %>
     </div>
   </body>
-  <%-include("./partials/footer.ejs") %>
+  <%-include("../partials/footer.ejs") %>
 </html>

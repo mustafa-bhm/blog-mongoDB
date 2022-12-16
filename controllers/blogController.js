@@ -1,11 +1,13 @@
 const Blog = require("../models/blog");
 
+// *** to extract blog handelers from the routes ***** //
+
 // to get blogs in homepage
 const blog_index = (req, res) => {
   Blog.find()
     .sort({ createdAt: -1 })
     .then((result) => {
-      res.render("index", { title: "all Blogs", blogs: result });
+      res.render("blogs/index", { title: "all Blogs", blogs: result });
     })
     .catch((err) => {
       console.log(err);
@@ -17,16 +19,16 @@ const blog_details = (req, res) => {
   const id = req.params.id;
   Blog.findById(id)
     .then((result) => {
-      res.render("details", { blog: result, title: "Blog details" });
+      res.render("blogs/details", { blog: result, title: "Blog details" });
     })
     .catch((err) => {
-      console.log(err);
+      res.status(404).render("404", { title: "Blog not found" });
     });
 };
 
 // to get new blog form view
 const blog_create_get = (req, res) => {
-  res.render("create", { title: "Create new blog" });
+  res.render("blogs/create", { title: "Create new blog" });
 };
 
 // to post new blog
