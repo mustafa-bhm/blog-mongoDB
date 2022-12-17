@@ -2,14 +2,16 @@
   <%-include("../partials/head.ejs") %>
   <body>
     <%- include("../partials/nav.ejs") %>
-    <div class="details content">
+    <div class="details">
       <img class="blog-image" src="<%=blog.image %>" alt="" />
       <h2><%= blog.title %></h2>
       <div class="content">
         <p><%=blog.body %></p>
       </div>
       <p><%= new Date( blog.createdAt).toDateString() %></p>
-      <a class="delete" data-doc="<%=blog._id %>"> X</a>
+      <a class="delete" title="delete this blog" data-doc="<%=blog._id %>">
+        X</a
+      >
     </div>
   </body>
   <%-include("../partials/footer.ejs") %>
