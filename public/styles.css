@@ -168,6 +168,7 @@ textarea {
 /* Footer */
 footer {
   margin-top: auto;
+  padding-top: 2rem;
 }
 .fa-brands {
   color: rgb(108, 82, 11);
