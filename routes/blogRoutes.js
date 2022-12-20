@@ -11,6 +11,12 @@ router.post("/", blogController.blog_create_post);
 // to get the form to create new blog
 router.get("/create", blogController.blog_create_get);
 
+// to get the form to update blog
+router.get("/update/:id", blogController.blog_update_form);
+
+// to update blog
+router.post("/update/:id", blogController.blog_update);
+
 router.get("/:id", blogController.blog_details);
 
 // to delete a blog

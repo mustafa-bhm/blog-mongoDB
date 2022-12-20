@@ -44,6 +44,32 @@ const blog_create_post = (req, res) => {
     });
 };
 
+// to get form to  update blog
+const blog_update_form = (req, res) => {
+  const id = req.params.id;
+
+  Blog.findById(id)
+    .then((result) => {
+      res.render("blogs/update", { blog: result, title: "Blog update" });
+    })
+    .catch((err) => {
+      res.status(404).render("404", { title: "Blog not found" });
+    });
+};
+
+// to handel req to update blog
+const blog_update = (req, res) => {
+  const id = req.params.id;
+
+  Blog.findByIdAndUpdate(id, req.body)
+    .then((result) => {
+      res.redirect("/blogs");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 // to delete a blog
 const blog_delete = (req, res) => {
   const id = req.params.id;
@@ -62,4 +88,6 @@ module.exports = {
   blog_create_get,
   blog_create_post,
   blog_delete,
+  blog_update_form,
+  blog_update,
 };
