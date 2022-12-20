@@ -97,21 +97,23 @@ footer {
   position: relative;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.527);
 }
-.delete {
-  position: absolute;
-  color: #fff;
-  font-weight: bold;
-  top: 10;
-  right: 10;
-  padding: 0.5rem 0.7rem;
+.btn {
+  padding: 0.7rem 2rem;
   border-radius: 8px;
-  background-color: rgba(208, 83, 83, 0.914);
   transition: ease-in-out 0.2s;
+  color: aliceblue;
+  font-weight: bolder;
 }
-.delete:hover {
+.delete {
+  background-color: rgba(208, 83, 83, 0.914);
+}
+.update {
+  background-color: rgba(17, 190, 60, 0.914);
+}
+.btn:hover {
   cursor: pointer;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.527);
-  font-size: 1.3rem;
+  opacity: 0.8;
 }
 
 /* create styles */

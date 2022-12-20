@@ -9,11 +9,17 @@
         <p><%=blog.body %></p>
       </div>
       <p><%= new Date( blog.createdAt).toDateString() %></p>
-      <a class="delete" title="delete this blog" data-doc="<%=blog._id %>">
-        X</a
-      >
+      <div class="btns">
+        <a
+          class="btn delete"
+          title="delete this blog"
+          data-doc="<%=blog._id %>"
+        >
+          Delete</a
+        >
 
-      <a class="update" href="/blogs/update/<%=blog._id %>">Edit</a>
+        <a class="btn update" href="/blogs/update/<%=blog._id %>">Edit</a>
+      </div>
     </div>
   </body>
   <%-include("../partials/footer.ejs") %>
