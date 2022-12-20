@@ -7,10 +7,10 @@ This Blog website was built as a part of The Odin Project Node.js course , and i
 - MangoDb for the database
 - Mongoose as modeling tool for MongoDB
 
-![home-page](public/ScreenShot2.png)
-![home-page](public/ScreenShot1.png)
-![home-page](public/ScreenShot3.png)
-
 ### Live
 
 👉 https://blog-mongodb.onrender.com/blogs
+
+![home-page](public/ScreenShot2.png)
+![home-page](public/ScreenShot1.png)
+![home-page](public/ScreenShot3.png)
