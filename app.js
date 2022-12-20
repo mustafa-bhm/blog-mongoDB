@@ -11,6 +11,7 @@ const apiKey = process.env.API_KEY;
 const dbURI = `mongodb+srv://stof:${apiKey}@blog-node.xmm976o.mongodb.net/node-tuts?retryWrites=true&w=majority`;
 
 // the second argument in connect () is to stop deprecation warning
+mongoose.set("strictQuery", false);
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => app.listen(3000))
