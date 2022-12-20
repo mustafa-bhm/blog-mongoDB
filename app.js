@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const blogRoutes = require("./routes/blogRoutes");
 require("dotenv").config();
+const port = process.env.PORT || 3000;
 
 const apiKey = process.env.API_KEY;
 
@@ -14,7 +15,7 @@ const dbURI = `mongodb+srv://stof:${apiKey}@blog-node.xmm976o.mongodb.net/node-t
 mongoose.set("strictQuery", false);
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((result) => app.listen(3000))
+  .then((result) => app.listen(port))
   .catch((err) => console.log(err));
 
 //register view engine
